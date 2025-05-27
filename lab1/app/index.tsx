@@ -10,7 +10,7 @@ export default function App() {
             Welcome to my App
         </Text>
       <Pressable>
-        <Text onPress={() => alert("Lab 1 Done")}>
+        <Text onPress={() => alert("Lab 2 Done")}>
           Press Me!
         </Text>
         <Fruits/>
