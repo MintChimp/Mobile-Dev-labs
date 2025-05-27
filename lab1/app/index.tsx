@@ -1,0 +1,30 @@
+import { StatusBar } from 'expo-status-bar';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import ExpoRouter from 'expo-router'
+import Fruits from '../components/fruits';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+        <Text>
+            Welcome to my App
+        </Text>
+      <Pressable>
+        <Text onPress={() => alert("Lab 1 Done")}>
+          Press Me!
+        </Text>
+        <Fruits/>
+      </Pressable>
+      <StatusBar style="auto" />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
