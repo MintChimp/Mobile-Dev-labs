@@ -20,9 +20,28 @@ export default function App() {
       <ScrollView contentContainerStyle={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.headerText}>Group Profile</Text>
+          {/* Back Button, Title, Add Button */}
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', paddingLeft: 15, paddingRight: 15 }}>
+            <TouchableOpacity onPress={handlePress}>
+              <Image
+                source={require('./assets/back_icon.png')}
+                style={{ width: 24, height: 24 }}
+              />
+            </TouchableOpacity>
+
+            <Text style={styles.headerText}>Group Profile</Text>
+            
+              <TouchableOpacity onPress={handlePress}>
+              <Image
+                source={require('./assets/add_icon.png')}
+                style={{ width: 24, height: 24 }}
+              />
+            </TouchableOpacity>
+          </View>
+          {/* Instagram Handle */}
           <Text style={{fontSize: 14, color: '#666'}}>ootd_everyday</Text>
         </View>
+
 
         {/* Profile Info */}
         <View style={styles.profileSection}>
