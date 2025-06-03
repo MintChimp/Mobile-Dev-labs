@@ -18,48 +18,47 @@ export default function App() {
   return (
     <View style={styles.wrapper}>
       <ScrollView contentContainerStyle={styles.container}>
-        {/* Header */}
+        {/* Header with Back, Title, Add, and Handle */}
         <View style={styles.header}>
-          {/* Back Button, Title, Add Button */}
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', paddingLeft: 15, paddingRight: 15 }}>
+          <View style={styles.headerContent}>
             <TouchableOpacity onPress={handlePress}>
               <Image
                 source={require('./assets/back_icon.png')}
-                style={{ width: 24, height: 24 }}
+                style={styles.headerIcon}
               />
             </TouchableOpacity>
 
             <Text style={styles.headerText}>Group Profile</Text>
-            
-              <TouchableOpacity onPress={handlePress}>
+
+            <TouchableOpacity onPress={handlePress}>
               <Image
                 source={require('./assets/add_icon.png')}
-                style={{ width: 24, height: 24 }}
+                style={styles.headerIcon}
               />
             </TouchableOpacity>
           </View>
-          {/* Instagram Handle */}
-          <Text style={{fontSize: 14, color: '#666'}}>ootd_everyday</Text>
+          <Text style={styles.handleText}>ootd_everyday</Text>
         </View>
 
-
-        {/* Profile Info */}
+        {/* Profile Picture + Stats */}
         <View style={styles.profileSection}>
           <Image
             source={require('./assets/generic_photo.jpg')}
             style={styles.profileImage}
           />
-          <View style={styles.profileStats}>
-            <Text style={styles.statNumber}>53</Text>
-            <Text style={styles.statLabel}>Posts</Text>
-          </View>
-          <View style={styles.profileStats}>
-            <Text style={styles.statNumber}>12</Text>
-            <Text style={styles.statLabel}>Members</Text>
-          </View>
-          <View style={styles.profileStats}>
-            <Text style={styles.statNumber}>1</Text>
-            <Text style={styles.statLabel}>Admins</Text>
+          <View style={styles.statsWrapper}>
+            <View style={styles.profileStats}>
+              <Text style={styles.statNumber}>53</Text>
+              <Text style={styles.statLabel}>Posts</Text>
+            </View>
+            <View style={styles.profileStats}>
+              <Text style={styles.statNumber}>12</Text>
+              <Text style={styles.statLabel}>Followers</Text>
+            </View>
+            <View style={styles.profileStats}>
+              <Text style={styles.statNumber}>1</Text>
+              <Text style={styles.statLabel}>Following</Text>
+            </View>
           </View>
         </View>
 
@@ -70,10 +69,23 @@ export default function App() {
           <Text>You know we’ll hype you up.</Text>
         </View>
 
-        {/* Member Dropdown (Clickable) */}
-        <TouchableOpacity style={styles.dropdown} onPress={handlePress}>
-          <Text style={styles.dropdownText}>Member ▼</Text>
-        </TouchableOpacity>
+        {/* Follow / Message / Email Buttons */}
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={[styles.dropdown, styles.followButton]}
+            onPress={handlePress}
+          >
+            <Text style={[styles.dropdownText, styles.followText]}>Follow</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.dropdown} onPress={handlePress}>
+            <Text style={styles.dropdownText}>Message</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.dropdown} onPress={handlePress}>
+            <Text style={styles.dropdownText}>Email</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Grid of Posts */}
         <View style={styles.grid}>
@@ -111,16 +123,32 @@ const styles = StyleSheet.create({
     paddingBottom: 80, // leave space for navbar
   },
   header: {
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
     marginBottom: 10,
+    paddingBottom: 8,
+  },
+  headerContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    paddingHorizontal: 15,
+    height: 50,
+  },
+  headerIcon: {
+    width: 24,
+    height: 24,
   },
   headerText: {
     fontSize: 20,
     fontWeight: '600',
+  },
+  handleText: {
+    fontSize: 14,
+    color: '#666',
+    textAlign: 'center',
+    marginTop: 2,
   },
   profileSection: {
     flexDirection: 'row',
@@ -133,6 +161,10 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 40,
     marginRight: 20,
+  },
+  statsWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   profileStats: {
     alignItems: 'center',
@@ -152,17 +184,33 @@ const styles = StyleSheet.create({
   groupName: {
     fontWeight: 'bold',
     fontSize: 16,
+    marginBottom: 4,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 15,
   },
   dropdown: {
-    alignSelf: 'center',
     backgroundColor: '#eee',
     paddingVertical: 8,
-    paddingHorizontal: 20,
+    width: 100,
     borderRadius: 8,
-    marginBottom: 15,
+    marginHorizontal: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   dropdownText: {
     fontWeight: '500',
+    color: '#000',
+    textAlign: 'center',
+    width: '100%',
+  },
+  followButton: {
+    backgroundColor: '#007AFF',
+  },
+  followText: {
+    color: '#fff',
   },
   grid: {
     flexDirection: 'row',
