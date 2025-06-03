@@ -21,12 +21,13 @@ export default function App() {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.headerText}>Group Profile</Text>
+          <Text style={{fontSize: 14, color: '#666'}}>ootd_everyday</Text>
         </View>
 
         {/* Profile Info */}
         <View style={styles.profileSection}>
           <Image
-            source={{ uri: 'https://via.placeholder.com/100' }}
+            source={require('./assets/generic_photo.jpg')}
             style={styles.profileImage}
           />
           <View style={styles.profileStats}>
@@ -69,7 +70,7 @@ export default function App() {
 
       {/* Bottom Navigation */}
       <View style={styles.navBar}>
-        {['Home', 'Search', 'Add', 'Reels', 'Profile'].map((label, i) => (
+        {['🏠', '🔍', '➕', '🎬', '👤'].map((label, i) => (
           <TouchableOpacity key={i} style={styles.navItem}>
             <Text style={styles.navText}>{label}</Text>
           </TouchableOpacity>
