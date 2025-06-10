@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import ExpoRouter from 'expo-router'
 import Fruits from '../components/fruits';
+import Button from '../components/button';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         </Text>
         <Fruits/>
       </Pressable>
+      <Button link={"/lab3"} text={"Lab3"} />
       <StatusBar style="auto" />
     </View>
   );
