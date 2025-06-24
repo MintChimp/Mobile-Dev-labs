@@ -17,6 +17,7 @@ export default function App() {
         <Fruits/>
       </Pressable>
       <Button link={"/lab3"} text={"Lab3"} />
+      <Button link={"/lab4"} text={"Lab4"} />
       <StatusBar style="auto" />
     </View>
   );
