@@ -1,11 +1,22 @@
 // DateFact.tsx
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View, ActivityIndicator } from 'react-native';
+import React, { useEffect, useState, ReactNode } from 'react';
+import { SafeAreaView, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View, ActivityIndicator, Keyboard, ScrollView, TouchableWithoutFeedback, } from 'react-native';
 import axios from 'axios';
 import { Picker } from '@react-native-picker/picker';
 
+
 const API_KEY = 'bedb53d3c8msh5de26c74b0a192ap111f0cjsn81b2aee88e7c';
 const API_HOST = 'numbersapi.p.rapidapi.com';
+
+type Props = {
+  children: ReactNode;
+};
+
+const DismissKeyboardView: React.FC<React.PropsWithChildren<{}>> = ({ children }) => (
+  <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+    <View style={{ flex: 1 }}>{children}</View>
+  </TouchableWithoutFeedback>
+);
 
 const DateFact: React.FC = () => {
   const [month, setMonth] = useState<string>('0');
@@ -68,58 +79,62 @@ useEffect(() => {
 
 return (
   <SafeAreaView style={styles.safeArea}>
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={styles.container}
-    >
-      <Text style={styles.title}>Enter a Date</Text>
-      <View style={styles.pickerContainer}>
-        <Picker
-          selectedValue={month}
-          onValueChange={(itemValue) => setMonth(itemValue)}
-          style={styles.picker}
+    <DismissKeyboardView>
+      <ScrollView keyboardShouldPersistTaps="handled">
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          style={styles.container}
         >
-          <Picker.Item label="Select Month" value="0" />
-          <Picker.Item label="January" value="1" />
-          <Picker.Item label="February" value="2" />
-          <Picker.Item label="March" value="3" />
-          <Picker.Item label="April" value="4" />
-          <Picker.Item label="May" value="5" />
-          <Picker.Item label="June" value="6" />
-          <Picker.Item label="July" value="7" />
-          <Picker.Item label="August" value="8" />
-          <Picker.Item label="September" value="9" />
-          <Picker.Item label="October" value="10" />
-          <Picker.Item label="November" value="11" />
-          <Picker.Item label="December" value="12" />
-        </Picker>
-      </View>
-      <TextInput
-        style={styles.input}
-        placeholder="Month (1–12)"
-        keyboardType="number-pad"
-        value={month}
-        onChangeText={setMonth}
-        maxLength={2}
-      />
+          <Text style={styles.title}>Enter a Date</Text>
+          <View style={styles.pickerContainer}>
+            <Picker
+              selectedValue={month}
+              onValueChange={(itemValue) => setMonth(itemValue)}
+              style={styles.picker}
+            >
+              <Picker.Item label="Select Month" value="0" />
+              <Picker.Item label="January" value="1" />
+              <Picker.Item label="February" value="2" />
+              <Picker.Item label="March" value="3" />
+              <Picker.Item label="April" value="4" />
+              <Picker.Item label="May" value="5" />
+              <Picker.Item label="June" value="6" />
+              <Picker.Item label="July" value="7" />
+              <Picker.Item label="August" value="8" />
+              <Picker.Item label="September" value="9" />
+              <Picker.Item label="October" value="10" />
+              <Picker.Item label="November" value="11" />
+              <Picker.Item label="December" value="12" />
+            </Picker>
+          </View>
+          <TextInput
+            style={styles.input}
+            placeholder="Month (1–12)"
+            keyboardType="number-pad"
+            value={month}
+            onChangeText={setMonth}
+            maxLength={2}
+          />
 
-      <TextInput
-        style={styles.input}
-        placeholder="Day (1–31)"
-        keyboardType="number-pad"
-        value={day}
-        onChangeText={setDay}
-        maxLength={2}
-      />
+          <TextInput
+            style={styles.input}
+            placeholder="Day (1–31)"
+            keyboardType="number-pad"
+            value={day}
+            onChangeText={setDay}
+            maxLength={2}
+          />
 
-      {error ? (
-      <Text style={styles.error}>{error}</Text>
-      ) : loading ? (
-      <ActivityIndicator size="large" color="#fff" />
-      ) : (
-      fact && <Text style={styles.fact}>{fact}</Text>
-      )}
-    </KeyboardAvoidingView>
+          {error ? (
+          <Text style={styles.error}>{error}</Text>
+          ) : loading ? (
+          <ActivityIndicator size="large" color="#fff" />
+          ) : (
+          fact && <Text style={styles.fact}>{fact}</Text>
+          )}
+        </KeyboardAvoidingView>
+      </ScrollView>
+    </DismissKeyboardView>
   </SafeAreaView>
 );
 };
