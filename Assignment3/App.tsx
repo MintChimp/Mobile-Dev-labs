@@ -2,12 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View, ActivityIndicator } from 'react-native';
 import axios from 'axios';
+import { Picker } from '@react-native-picker/picker';
 
 const API_KEY = 'bedb53d3c8msh5de26c74b0a192ap111f0cjsn81b2aee88e7c';
 const API_HOST = 'numbersapi.p.rapidapi.com';
 
 const DateFact: React.FC = () => {
-  const [month, setMonth] = useState<string>('');
+  const [month, setMonth] = useState<string>('0');
   const [day, setDay] = useState<string>('');
   const [fact, setFact] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -72,7 +73,27 @@ return (
       style={styles.container}
     >
       <Text style={styles.title}>Enter a Date</Text>
-
+      <View style={styles.pickerContainer}>
+        <Picker
+          selectedValue={month}
+          onValueChange={(itemValue) => setMonth(itemValue)}
+          style={styles.picker}
+        >
+          <Picker.Item label="Select Month" value="0" />
+          <Picker.Item label="January" value="1" />
+          <Picker.Item label="February" value="2" />
+          <Picker.Item label="March" value="3" />
+          <Picker.Item label="April" value="4" />
+          <Picker.Item label="May" value="5" />
+          <Picker.Item label="June" value="6" />
+          <Picker.Item label="July" value="7" />
+          <Picker.Item label="August" value="8" />
+          <Picker.Item label="September" value="9" />
+          <Picker.Item label="October" value="10" />
+          <Picker.Item label="November" value="11" />
+          <Picker.Item label="December" value="12" />
+        </Picker>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Month (1–12)"
@@ -138,10 +159,21 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   error: {
-  color: '#ff4d4d',
-  fontSize: 16,
-  marginTop: 10,
-  textAlign: 'center',
+    color: '#ff4d4d',
+    fontSize: 16,
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  pickerContainer: {
+    height: 216,
+    overflow: 'hidden',
+    marginBottom: 16,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+  },
+  picker: {
+    flex: 1,
+    color: '#000',
   },
 });
 
