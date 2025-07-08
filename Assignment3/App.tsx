@@ -143,52 +143,54 @@ export default DateFact;
 
 const styles = StyleSheet.create({
   safeArea: {
-    flex: 1,
-    backgroundColor: '#121212',
+    flex: 1
   },
   container: {
     flex: 1,
     padding: 24,
-    backgroundColor: '#121212',
-    justifyContent: 'center', // Vertically center
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   title: {
-    fontSize: 22,
+    fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  input: {
-    height: 50,
-    backgroundColor: '#fff',
-    color: '#000',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 16,
-  },
-  fact: {
-    marginTop: 20,
-    fontSize: 18,
-    color: '#fff',
-    textAlign: 'center',
-  },
-  error: {
-    color: '#ff4d4d',
-    fontSize: 16,
-    marginTop: 10,
-    textAlign: 'center',
+    color: '#121212',
+    marginBottom: 24,
+    textAlign: 'center'
   },
   pickerContainer: {
-    height: 216,
-    overflow: 'hidden',
-    marginBottom: 16,
-    backgroundColor: '#f0f0f0',
+    width: '100%',
+    backgroundColor: '#1E1E1E',
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#333333',
+    marginBottom: 16
   },
   picker: {
     flex: 1,
-    color: '#000',
+    color: '#FFFFFF',
+    backgroundColor: '#1E1E1E'
+  },
+  input: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#121212',
+    color: '#FFFFFF',
+    borderColor: '#333333',
+    paddingHorizontal: 16,
+    marginBottom: 16,
+    fontSize: 16
+  },
+  fact: {
+    marginTop: 20,
+    fontSize: 16,
+    color: '#121212',
+    textAlign: 'center'
+  },
+  error: {
+    color: '#FF6B6B',
+    fontSize: 16,
+    marginTop: 12,
+    textAlign: 'center'
   },
 });
-
