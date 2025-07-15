@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#121212',
+    color: 'gray',
     marginBottom: 24,
     textAlign: 'center'
   },
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   picker: {
     flex: 1,
     color: '#FFFFFF',
-    backgroundColor: '#1E1E1E'
+    backgroundColor: 'lightgray'
   },
   input: {
     width: '100%',
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
   fact: {
     marginTop: 20,
     fontSize: 16,
-    color: '#121212',
+    color: 'gray',
     textAlign: 'center'
   },
   error: {
